@@ -26,13 +26,30 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... } @inputs: {
+    nixosModules = {
+      home = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.und = import ./home;
+        home-manager.verbose = true;
+      };
+      nix-path = {
+        nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      };
+    };
 
-    nixosConfigurations = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules =
-        [ ({ pkgs, ... }: {
-            boot.isContainer = true;
+    nixosConfigurations =
+      let
+        system = "x86_64-linux";
+        sharedModules = [ home-manager.nixosModule ] ++ (nixpkgs.lib.attrValues self.nixosModules);
+      in {
+        lambda = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules =
+            [ ({ pkgs, ... }: {
+
+              boot.isContainer = true;
 
             # Let 'nixos-version --json' know about the Git revision
             # of this flake.
@@ -42,7 +59,9 @@
             networking.useDHCP = false;
 
           })
-        ];
+          ./lambda.nix
+        ] ++ sharedModules;
+      };
     };
 
   };
