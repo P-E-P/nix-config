@@ -1,9 +1,34 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.03";
+  description = "Nixos configuration with flakes";
 
-  outputs = { self, nixpkgs }: {
+  inputs = {
+    nixpkgs = {
+      type = "github";
+      owner = "NixOs";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+    };
 
-    nixosConfigurations.container = nixpkgs.lib.nixosSystem {
+    home-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flake-utils = {
+      type = "github";
+      owner = "numtide";
+      repo = "flake-utils";
+      ref = "master";
+    };
+
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }: {
+
+    nixosConfigurations = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules =
         [ ({ pkgs, ... }: {
@@ -15,13 +40,7 @@
 
             # Network configuration.
             networking.useDHCP = false;
-            networking.firewall.allowedTCPPorts = [ 80 ];
 
-            # Enable a web server.
-            services.httpd = {
-              enable = true;
-              adminAddr = "morty@example.org";
-            };
           })
         ];
     };
