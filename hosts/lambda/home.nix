@@ -13,6 +13,7 @@ in
       username = "und";
       homeDirectory = "/home/und";
       packages = with pkgs; [
+        universal-ctags
         rustup
         cmake patchelf
 
@@ -36,6 +37,8 @@ in
 
         # Custom programs
         tin
+
+        discord
       ];
     };
 

@@ -44,8 +44,12 @@
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
-    xserver.videoDrivers = [ "nvidia" ];
-    xserver.windowManager.i3.enable = true;
+    xserver = {
+      enable = true;
+      videoDrivers = [ "nvidia" ];
+      windowManager.i3.enable = true;
+      displayManager.lightdm.enable = true;
+    };
 
     mpd = import ./mpd.nix {};
   };
