@@ -1,4 +1,8 @@
 { config, pkgs, lib, ... }:
+let
+  tin = pkgs.callPackage programs/tin.nix {};
+  discordUpdated = import programs/discord.nix {};
+in
 {
 
   home-manager.users.und = {
@@ -29,6 +33,9 @@
         # Fonts
         dejavu_fonts
         feh
+
+        # Custom programs
+        tin
       ];
     };
 
