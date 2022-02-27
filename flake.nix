@@ -47,20 +47,9 @@
         lambda = nixpkgs.lib.nixosSystem {
           inherit system;
           modules =
-            [ ({ pkgs, ... }: {
-
-              boot.isContainer = true;
-
-            # Let 'nixos-version --json' know about the Git revision
-            # of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-
-            # Network configuration.
-            networking.useDHCP = false;
-
-          })
-          ./lambda.nix
-        ] ++ sharedModules;
+            [
+              ./lambda.nix
+            ] ++ sharedModules;
       };
     };
 
