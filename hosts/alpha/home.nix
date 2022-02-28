@@ -1,13 +1,11 @@
 { config, pkgs, lib, ... }:
+# TODO:
 # Find a way to refactor common bits
-#let
-  #tin = pkgs.callPackage programs/tin.nix {};
-#in
 {
 
   home-manager.users.und = {
 
-    #xsession.windowManager.i3 = import programs/i3 { inherit pkgs lib; };
+    xsession.windowManager.i3 = import programs/i3 { inherit pkgs lib; };
 
     home = {
       username = "und";
@@ -16,6 +14,7 @@
         universal-ctags
         rustup
         cmake patchelf
+        arandr
 
         docker-compose
         # Multimedia
@@ -36,13 +35,12 @@
         feh
 
         # Custom programs
-        #tin
         discord
       ];
     };
 
 
-    #programs = import ./programs { inherit pkgs; };
+    programs = import ./programs { inherit pkgs; };
 
   };
 }
