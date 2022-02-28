@@ -42,7 +42,15 @@
     nixosConfigurations =
       let
         system = "x86_64-linux";
-        sharedModules = [ home-manager.nixosModule ] ++ (nixpkgs.lib.attrValues self.nixosModules);
+        shared_overlays = [
+          (self: super: {
+            packages = import ./pkgs { pkgs = super; };
+          })
+        ];
+        sharedModules = [
+          home-manager.nixosModule
+          { nixpkgs.overlays = shared_overlays; }
+        ] ++ (nixpkgs.lib.attrValues self.nixosModules);
       in {
         lambda = nixpkgs.lib.nixosSystem {
           inherit system;
