@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  tin = pkgs.callPackage programs/tin.nix {};
-  discordUpdated = import programs/discord.nix {};
-in
+
 {
 
   home-manager.users.und = {
@@ -36,7 +33,7 @@ in
         feh
 
         # Custom programs
-        tin
+        #tin
 
         discord
       ];
