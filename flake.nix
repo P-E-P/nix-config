@@ -50,8 +50,14 @@
             [
               ./lambda.nix
             ] ++ sharedModules;
+        };
+        alpha = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./alpha.nix
+          ] ++ sharedModules;
+        };
       };
-    };
 
   };
 }
