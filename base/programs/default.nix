@@ -7,6 +7,7 @@
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       tree
+      most
       git
       git-lfs
       gnumake
