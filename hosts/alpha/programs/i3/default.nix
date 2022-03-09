@@ -3,7 +3,7 @@
 let
   wallpaper = builtins.fetchurl {
     url = https://wallpapers.etherealgames.com/wp-content/uploads/sites/6/2018/04/Doom-Wallpaper-003.jpg;
-    sha256 = "0318m1cj8q4xj0pjqq4026arjwa2hp8mb4qmrvrcmbsaynzlh5xb";
+    sha256 = "1f207kh8c02xv4c03bylkxyw2ppcs3ns9dzc5hwfdqhrp53ij922";
   };
   cfg = {
     workspaces = {

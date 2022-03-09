@@ -8,4 +8,10 @@
     lg = "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
   };
   ignores = [ "*~" "*.swp" ".o" ".d" "format_marker"];
+
+  extraConfig = {
+    pull = {
+      rebase = true;
+    };
+  };
 }

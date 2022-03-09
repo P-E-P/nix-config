@@ -24,6 +24,14 @@
     };
   };
 
+  sound.enable = true;
+
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+  };
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -43,7 +51,7 @@
 
   };
 
-  environment.variables = { 
+  environment.variables = {
     EDITOR = "vim";
   };
 
