@@ -47,6 +47,35 @@
     keyMap = "us";
   };
 
+  fonts = {
+    fonts = with pkgs; [ 
+      inter
+      iosevka
+      fira-code
+      scientifica
+      twemoji-color-font
+      paratype-pt-serif
+      material-icons
+      material-design-icons
+      font-awesome
+    ];
+
+    fontconfig = {
+      enable = true;
+
+      defaultFonts = {
+        serif = [ "Paratype Pt Serif" ];
+        sansSerif = [ "Inter" ];
+        monospace = [ "Iosevka Slab" ];
+
+        emoji = [ "Twitter Color Emoji" ];
+      };
+    };
+
+
+  };
+
+
 
   services = {
     # Enable the OpenSSH daemon.
@@ -55,7 +84,10 @@
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
-      windowManager.i3.enable = true;
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
       displayManager.lightdm.enable = true;
     };
 

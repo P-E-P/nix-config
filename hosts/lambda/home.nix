@@ -13,6 +13,7 @@
         universal-ctags
         rustup
         cmake patchelf
+        neofetch
 
         docker-compose
         # Multimedia
@@ -41,6 +42,8 @@
 
 
     programs = import ./programs { inherit pkgs; };
+
+    services = import ./services { inherit pkgs; };
 
   };
 }

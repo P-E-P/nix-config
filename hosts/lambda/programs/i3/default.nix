@@ -7,28 +7,35 @@ let
   };
   cfg = {
     workspaces = {
-    ws1 = "1";
-    ws2 = "2";
-    ws3 = "3";
-    ws4 = "4";
-    ws5 = "5";
-    ws6 = "6";
-    ws7 = "7";
-    ws8 = "8";
-    ws9 = "9";
-    ws10 = "10";
+      ws1 = "1";
+      ws2 = "2";
+      ws3 = "3";
+      ws4 = "4";
+      ws5 = "5";
+      ws6 = "6";
+      ws7 = "7";
+      ws8 = "8";
+      ws9 = "9";
+      ws10 = "10";
     };
   };
 in
   {
     enable = true;
-    package = pkgs.i3;
+    package = pkgs.i3-gaps;
 
     config = rec {
       modifier = "Mod4";
       terminal = "alacritty";
 
       window.border = 1;
+
+      bars = [ ];
+
+      gaps = {
+        inner = 15;
+        outer = 5;
+      };
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
@@ -94,6 +101,16 @@ in
       startup = [
         {
           command = "${pkgs.feh}/bin/feh --bg-scale ${wallpaper}";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "exec i3-msg workspace 1";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "systemctl --user restart polybar.service";
           always = true;
           notification = false;
         }
