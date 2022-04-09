@@ -28,14 +28,13 @@
         zip unzip lz4 unrar
         gnupg
 
-        # Fonts
-        dejavu_fonts
         feh
 
         # Custom programs
         #tin
 
         discord
+        # quartus-prime-lite
       ];
     };
 
