@@ -13,6 +13,7 @@
         universal-ctags
         rustup
         cmake patchelf
+        neofetch
 
         docker-compose
         # Multimedia
