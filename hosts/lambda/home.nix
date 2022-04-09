@@ -41,5 +41,7 @@
 
     programs = import ./programs { inherit pkgs; };
 
+    services = import ./services { inherit pkgs; };
+
   };
 }
