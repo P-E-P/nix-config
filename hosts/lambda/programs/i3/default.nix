@@ -28,7 +28,7 @@ in
       modifier = "Mod4";
       terminal = "alacritty";
 
-      window.border = 1;
+      window.border = 0;
 
       gaps = {
         inner = 15;
