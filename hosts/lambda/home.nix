@@ -28,6 +28,7 @@
         woof ripgrep
         zip unzip lz4 unrar
         gnupg
+        gtop
 
         feh
 
