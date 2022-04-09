@@ -77,4 +77,11 @@
       qemu.package = pkgs.qemu_kvm;
     };
   };
+
+  fonts.fonts = with pkgs; [
+    iosevka
+    dejavu_fonts
+    nerdfonts
+  ];
+
 }
