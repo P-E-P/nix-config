@@ -35,6 +35,8 @@ in
         outer = 5;
       };
 
+      bars = [ ];
+
       keybindings = lib.mkOptionDefault {
         "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
         "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
@@ -99,6 +101,18 @@ in
       startup = [
         {
           command = "${pkgs.feh}/bin/feh --bg-scale ${wallpaper}";
+          always = true;
+          notification = false;
+        }
+
+        {
+          command = "exec i3-msg workspace 1";
+          always = true;
+          notification = false;
+        }
+
+        {
+          command = "systemctl --user restart polybar.service";
           always = true;
           notification = false;
         }
