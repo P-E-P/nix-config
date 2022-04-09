@@ -3,10 +3,17 @@
 {
   picom = {
     enable = true;
+
     blur = true;
-    blurExclude = [ "window_type = 'dock'" "window_type = 'desktop'" ];
+    blurExclude = [
+      "window_type = 'dock'"
+      "window_type = 'desktop'"
+      "name ~= 'Firefox$'"
+    ];
+
     fade = true;
     fadeDelta = 5;
+
     shadow = true;
     shadowOpacity = "0.7";
     shadowExclude = [ "window_type *= 'normal' && ! name ~= ''" ];
@@ -33,6 +40,7 @@
       detect-transient = true;
       mark-wmwin-focused = true;
       mark-ovredir-focused = true;
+      focus-exclude = [ "class_g = 'Firefox' && argb" ];
     '';
   };
 
