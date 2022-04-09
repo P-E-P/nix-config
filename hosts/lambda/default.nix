@@ -55,7 +55,10 @@
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
-      windowManager.i3.enable = true;
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
       displayManager.lightdm.enable = true;
     };
 
