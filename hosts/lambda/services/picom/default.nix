@@ -39,6 +39,6 @@
       detect-transient = true;
       mark-wmwin-focused = true;
       mark-ovredir-focused = true;
-      focus-exclude = [ "class_g = 'Firefox' && argb" ];
+      focus-exclude = [ "class_g = 'Firefox' && argb", "class_g = 'Discord'", "class_g = 'Evince'"];
   '';
 }
