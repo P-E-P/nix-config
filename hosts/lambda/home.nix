@@ -31,6 +31,8 @@
         gtop
 
         feh
+        gcc
+        evince
 
         # Custom programs
         #tin
