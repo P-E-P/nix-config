@@ -5,7 +5,7 @@
 
   settings = {
 
-    background_opacity = 0.75;
+    window.opacity = 0.75;
 
     font = {
       normal = {
