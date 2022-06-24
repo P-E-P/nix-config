@@ -36,6 +36,7 @@
 
         # Custom programs
         #tin
+        steam
 
         discord
         # quartus-prime-lite
