@@ -39,6 +39,8 @@
       };
     };
 
+    overlays = import ./overlays;
+
     nixosConfigurations =
       let
         system = "x86_64-linux";
@@ -46,7 +48,8 @@
           (self: super: {
             packages = import ./pkgs { pkgs = super; };
           })
-        ];
+        ] ++ builtins.attrValues self.overlays;
+
         sharedModules = [
           home-manager.nixosModule
           { nixpkgs.overlays = shared_overlays; }

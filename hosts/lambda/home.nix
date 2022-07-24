@@ -9,7 +9,8 @@
     home = {
       username = "und";
       homeDirectory = "/home/und";
-      packages = with pkgs; [
+      packages = builtins.attrValues {
+        inherit (pkgs)
         universal-ctags
         rustup
         cmake patchelf
@@ -24,7 +25,7 @@
         # Misc
         minecraft flameshot
         firefox pavucontrol
-        libnotify texlive.combined.scheme-full
+        libnotify
         woof ripgrep
         zip unzip lz4 unrar
         gnupg
@@ -39,8 +40,11 @@
         steam
 
         discord
-        # quartus-prime-lite
-      ];
+        ;
+        inherit (pkgs.texlive.combined)
+        scheme-full
+        ;
+      };
     };
 
 
