@@ -14,7 +14,6 @@
     useDHCP = false;
 
     networkmanager.enable = true;
-    interfaces.wlp3s0.useDHCP = true;
 
     firewall = {
       allowedUDPPorts = [ 51820 ];
