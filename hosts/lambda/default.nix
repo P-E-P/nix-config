@@ -32,15 +32,26 @@
 
   sound.enable = true;
 
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+      extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+    };
+
+    opengl.driSupport32Bit = true;
   };
 
   time.timeZone = "Europe/Paris";
 
+  environment.variables = { 
+    EDITOR = "vim";
+    PAGER = "most";
+  };
+
+
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -48,26 +59,31 @@
 
 
   services = {
-    # Enable the OpenSSH daemon.
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+      passwordAuthentication = false;
+    };
 
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
+
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
       };
+
       displayManager.lightdm.enable = true;
     };
 
     mpd = import ./mpd.nix {};
   };
-  hardware.opengl.driSupport32Bit = true;
 
-  environment.variables = { 
-    EDITOR = "vim";
-    PAGER = "most";
+  security.pam.services = {
+
+    sshd.googleAuthenticator.enable = true;
+
   };
 
   virtualisation = {
