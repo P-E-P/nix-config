@@ -68,6 +68,13 @@
             ./alpha.nix
           ] ++ sharedModules;
         };
+
+        omega = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./omega.nix
+          ] ++ sharedModules;
+        };
       };
 
   };
