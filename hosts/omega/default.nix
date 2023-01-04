@@ -32,10 +32,7 @@
 
   sound.enable = true;
   hardware.opengl.enable = true;
-  hardware.pulseaudio.enable = false;
-
-  security.polkit.enable = true;
-  security.rtkit.enable = true;
+  hardware.pulseaudio.enable = true;
 
   time.timeZone = "Europe/Paris";
 
@@ -66,11 +63,13 @@
       passwordAuthentication = false;
     };
 
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
+    #pipewire = {
+      #enable = true;
+      #alsa.enable = true;
+      #pulse.enable = true;
+      #wireplumber.enable = false;
+      #media-session.enable = true;
+    #};
 
     mpd = import ./mpd.nix {};
 

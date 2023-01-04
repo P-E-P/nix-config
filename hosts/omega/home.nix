@@ -14,7 +14,6 @@
         nil
         wayland
         alacritty
-        wireplumber
         qpwgraph
         wdisplays
         pavucontrol
