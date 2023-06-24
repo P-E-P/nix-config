@@ -21,7 +21,7 @@
         vlc obs-studio imagemagick
         inkscape
         # Networking
-        wireguard nethogs sshfs
+        wireguard-tools nethogs sshfs
         # Misc
         minecraft flameshot
         firefox pavucontrol
@@ -38,6 +38,7 @@
         # Custom programs
         #tin
         steam
+        helix
 
         discord
         ;

@@ -18,9 +18,23 @@
       fsType = "ext4";
     };
 
+  fileSystems."/boot" =
+    { device = "systemd-1";
+      fsType = "autofs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7766dd21-5010-4f5a-a91f-fbd8e4e0518d"; }
     ];
+
+  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated config
+  # replicates the default behaviour.
+  networking.useDHCP = lib.mkDefault false;
+  networking.interfaces.docker0.useDHCP = lib.mkDefault true;
+  networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
+  networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
+  networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
