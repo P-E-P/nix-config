@@ -6,4 +6,8 @@
 
   polybar = import ./polybar { inherit pkgs; };
 
+  autorandr = {
+    enable = true;
+  };
+
 }
