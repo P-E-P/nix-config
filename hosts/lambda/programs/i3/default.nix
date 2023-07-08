@@ -22,7 +22,6 @@ let
 in
   {
     enable = true;
-    #package = pkgs.i3-gaps;
 
     config = rec {
       modifier = "Mod4";
