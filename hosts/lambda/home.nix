@@ -38,7 +38,6 @@
         # Custom programs
         #tin
         steam
-        helix
 
         discord
         ;

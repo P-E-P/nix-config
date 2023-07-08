@@ -22,4 +22,6 @@
 
   ncmpcpp = import ./ncmpcpp.nix {};
 
+  helix = import ./helix.nix {};
+
 }
