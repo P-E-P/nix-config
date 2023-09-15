@@ -26,6 +26,4 @@
     enable = true;
   };
 
-  mako.enable = true;
-
 }

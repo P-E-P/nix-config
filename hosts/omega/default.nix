@@ -59,9 +59,15 @@
 
     openssh = {
       enable = true;
-      permitRootLogin = "no";
-      passwordAuthentication = false;
+
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
+
     };
+
+
 
     #pipewire = {
       #enable = true;
@@ -76,11 +82,14 @@
     geoclue2.enable = true;
   };
 
+  security.polkit.enable = true;
   security.pam.services = {
 
     sshd.googleAuthenticator.enable = true;
 
   };
+  services.xserver.videoDrivers = [ "nvidia"];
+  hardware.nvidia.modesetting.enable = true;
 
   virtualisation = {
     docker.enable = true;
@@ -92,7 +101,7 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     iosevka
     dejavu_fonts
     nerdfonts

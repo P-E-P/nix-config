@@ -2,5 +2,6 @@
 
 {
 
+  mako.enable = true;
 
 }

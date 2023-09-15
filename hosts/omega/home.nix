@@ -9,6 +9,8 @@
       homeDirectory = "/home/und";
       packages = builtins.attrValues {
         inherit (pkgs)
+        virt-manager
+        zulip
         neofetch
         helix
         nil
