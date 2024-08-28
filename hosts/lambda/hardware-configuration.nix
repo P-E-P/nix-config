@@ -19,7 +19,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "systemd-1";
+    { device = "/dev/disk/by-uuid/1FDA-8A5A";
       fsType = "autofs";
     };
 
