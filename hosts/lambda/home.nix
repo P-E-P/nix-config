@@ -23,7 +23,7 @@
         # Networking
         wireguard-tools nethogs sshfs
         # Misc
-        minecraft flameshot
+        flameshot
         firefox pavucontrol
         libnotify
         woof ripgrep
